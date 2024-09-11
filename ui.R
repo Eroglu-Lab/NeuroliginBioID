@@ -3,7 +3,7 @@ library(tidyverse)
 library(ggplot2)
 library(shinythemes)
 
-fc <- read.csv('20210422_NL_BioID_FoldChanges.csv')
+fc <- read.csv('20240910_NL_BioID_FoldChanges.csv')
 
 ui <- fluidPage(theme=shinytheme('spacelab'),
   titlePanel("Neuroligin BioID data"),

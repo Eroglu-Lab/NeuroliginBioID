@@ -1,8 +1,8 @@
 server <- function(input, output) {
   
-  counts <- read.csv('20210422_normalizedCounts.csv')
-  fc <- read.csv('20210422_NL_BioID_FoldChanges.csv')
-  pct <- read.csv('20210422_percentiles.csv')
+  counts <- read.csv('20240910_normalizedCounts.csv')
+  fc <- read.csv('20240910_NL_BioID_FoldChanges.csv')
+  pct <- read.csv('20240910_percentiles.csv')
   pct$conditionLong <- paste(pct$cell, pct$BioID, sep=' ')
   
 ##############
@@ -83,6 +83,7 @@ observeEvent(input$Gene, {
     
     ggplot(tab_fc(), aes(x=BioID, y=FC, fill=cell)) + 
       geom_bar(stat='identity', position = 'dodge') + scale_x_discrete(drop=F) + 
+      geom_hline(linetype=2, col='black', yintercept=0, lwd=1) + 
       geom_text(aes(label=pval_rnd), position=position_dodge(width=0.9), vjust=-0.5, alpha=1, size=5, color= 'black') +
       theme_bw(base_size=20)+ theme(panel.border=element_blank(), axis.line=element_line(), 
                                     axis.text.x=element_text(size=15, color='black'), 
