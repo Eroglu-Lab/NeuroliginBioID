@@ -1,4 +1,4 @@
-library(shiny)
+ulibrary(shiny)
 library(tidyverse)
 library(ggplot2)
 library(shinythemes)
@@ -6,7 +6,7 @@ library(shinythemes)
 fc <- read.csv('20240919_NL_BioID_FoldChanges.csv')
 
 ui <- fluidPage(theme=shinytheme('spacelab'),
-  titlePanel("Neuroligin BioID data"),
+  titlePanel("Eroglu Lab in vivo Neuroligin BioID"),
 
     sidebarLayout(
               sidebarPanel(selectInput("Gene", 
