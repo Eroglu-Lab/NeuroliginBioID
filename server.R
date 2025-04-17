@@ -1,7 +1,7 @@
 server <- function(input, output) {
   
   counts <- read.csv('20240910_normalizedCounts.csv')
-  fc <- read.csv('20240919_NL_BioID_FoldChanges.csv')
+  fc <- read.csv('20250417_NL_BioID_FoldChanges.csv')
   pct <- read.csv('20240910_percentiles.csv')
   pct$conditionLong <- paste(pct$cell, pct$BioID, sep=' ')
   
@@ -19,7 +19,8 @@ server <- function(input, output) {
                                      levels = c("Turbo1_A", "NL1_A","Turbo2_A","NL2_A", "Turbo3_A", "NL3_A",
                                                 "Turbo_N", "NL2_N" )))
   
-  fc$pval_rnd <- formatC(fc$pval, format='e', digits=2)
+  fc$pval_rnd <- formatC(fc$pval, digits=2)
+  fc$pval_rnd <- as.numeric(fc$pval_rnd)
   
   fc <- fc %>% 
     dplyr::mutate(BioID = factor(BioID, 
@@ -85,14 +86,18 @@ observeEvent(input$Gene, {
       geom_bar(stat='identity', position = position_dodge()) + scale_x_discrete(drop=F) + 
       geom_hline(linetype=2, col='black', yintercept=0, lwd=1) + 
       geom_errorbar(aes(ymin=FC-sd, ymax=FC+sd, width=0.3), position = position_dodge(0.9)) + 
-      geom_text(aes(label=pval_rnd), position=position_dodge(width=0.9), vjust=-0.5, alpha=1, size=5, color= 'black') +
+      geom_text(aes(label=pval_rnd, color=if_else(pval_rnd < 0.05, 'red', 'black'),
+                    fontface=if_else(pval_rnd < 0.05, "bold", "plain")), vjust=-0.9, size=5, 
+                position=position_dodge(width=0.9)) +
       theme_bw(base_size=20)+ theme(panel.border=element_blank(), axis.line=element_line(), 
                                     axis.text.x=element_text(size=15, color='black'), 
                                     axis.text.y=element_text(size=15, color='black'),
                                     axis.title.x = element_text(size=14),
                                     axis.title.y = element_text(size=14)) +
       ylab('Fold change \n relative to control') + xlab('Bait Protein') +
-      scale_fill_manual(values = c("palegreen4","hotpink4"))
+      scale_fill_manual(values = c("palegreen4","hotpink4")) + scale_color_manual(values=c('black', 'red')) +
+      guides(color='none')
+    
     
   })
 })
