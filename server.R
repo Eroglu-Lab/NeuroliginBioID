@@ -84,7 +84,7 @@ observeEvent(input$Gene, {
     
     ggplot(tab_fc(), aes(x=BioID, y=FC, fill=cell)) + 
       geom_bar(stat='identity', position = position_dodge()) + scale_x_discrete(drop=F) + 
-      geom_hline(linetype=2, col='black', yintercept=0, lwd=1) + 
+      geom_hline(linetype=2, col='black', yintercept=1.5, lwd=1) + 
       geom_errorbar(aes(ymin=FC-sd, ymax=FC+sd, width=0.3), position = position_dodge(0.9)) + 
       geom_text(aes(label=pval_rnd, color=if_else(pval_rnd < 0.05, 'red', 'black'),
                     fontface=if_else(pval_rnd < 0.05, "bold", "plain")), vjust=-0.9, size=5, 
