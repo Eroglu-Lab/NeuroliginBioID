@@ -2,11 +2,12 @@ library(shiny)
 library(tidyverse)
 library(ggplot2)
 library(shinythemes)
+options(scipen = 999)
 
-fc <- read.csv('20240919_NL_BioID_FoldChanges.csv')
+fc <- read.csv('20250418_NL_BioID_FoldChanges.csv')
 
 ui <- fluidPage(theme=shinytheme('spacelab'),
-  titlePanel("Eroglu Lab in vivo Neuroligin BioID"),
+  titlePanel("Neuroligin BioID data"),
 
     sidebarLayout(
               sidebarPanel(selectInput("Gene", 
@@ -27,7 +28,8 @@ ui <- fluidPage(theme=shinytheme('spacelab'),
         "Fold Change Relative to Experimental Control",
               h6('Enrichment compared to cytosolic Turbo BirA.
               P-values in each bar'),
-              plotOutput("FC", height='500px', width='700px')),
+              plotOutput("FC", height='500px', width='700px'),
+              "Dotted line indicates 1.5 fold enrichment compared to control. \n Values above bar are p-values [bold and red indicates p-value < 0.05"),
         tabPanel("Reference",
                  "These data were generated using in vivo BioID in P21 mouse cortex. \n Please see publication at:")
     ))))
