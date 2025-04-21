@@ -1,7 +1,7 @@
 server <- function(input, output) {
   
   counts <- read.csv('20240910_normalizedCounts.csv')
-  fc <- read.csv('20250417_NL_BioID_FoldChanges.csv')
+  fc <- read.csv('20250418_NL_BioID_FoldChanges.csv')
   pct <- read.csv('20240910_percentiles.csv')
   pct$conditionLong <- paste(pct$cell, pct$BioID, sep=' ')
   
