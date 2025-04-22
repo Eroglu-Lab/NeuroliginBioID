@@ -29,7 +29,7 @@ ui <- fluidPage(theme=shinytheme('spacelab'),
               h6('Enrichment compared to cytosolic Turbo BirA.
               P-values in each bar'),
               plotOutput("FC", height='500px', width='700px'),
-              "Dotted line indicates 1.5 fold enrichment compared to control. \n Values above bar are p-values [bold and red indicates p-value < 0.05"),
+              "Dotted line indicates 1.5 fold enrichment compared to control. \n Values above bar are p-values [bold and red indicates p-value < 0.05]"),
         tabPanel("Reference",
                  "These data were generated using in vivo BioID in P21 mouse cortex. \n Please see publication at:")
     ))))
