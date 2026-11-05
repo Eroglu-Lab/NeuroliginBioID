@@ -34,15 +34,13 @@ ui <- fluidPage(theme=shinytheme('spacelab'),
                  "These data were generated using in vivo BioID in P21 mouse cortex.",
                          br(),
                          br(),
-                         "Please see publication at:",
+                         "These data have been published, please cite:",
                          br(),
                          br(),
                   "Sakers K, Ramirez JJ, Elazar N, Nagendren L, Soderblom E, Eroglu C. Neuroligin-2 is ubiquitinated by Nedd4l to control developmental astrocyte morphogenesis.
                   J Cell Biol. 2026 Jul 6;225(7):e202512111. doi: 10.1083/jcb.202512111. Epub 2026 Jun 1. PMID: 42223381; PMCID: PMC13276441.",
-                         br(),
-                         br(),
                  tags$p(
-                   tags$a("Click here",
+                   tags$a("Click here for publication",
                           href = "https://rupress.org/jcb/article/225/7/e202512111/282648/Neuroligin-2-is-ubiquitinated-by-Nedd4l-to-control",
                           target = "_blank")
                  )
