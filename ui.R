@@ -24,6 +24,12 @@ ui <- fluidPage(theme=shinytheme('spacelab'),
     mainPanel(
       tabsetPanel(
         type='tabs',
+         tabPanel("Enrichment",
+        "Fold Change Relative to Experimental Control",
+              h6('Enrichment compared to cytosolic Turbo BirA.
+              P-values in each bar'),
+              plotOutput("FC", height='500px', width='700px'),
+              "Dotted line indicates 1.5 fold enrichment compared to control. \n Values above bar are p-values [bold and red indicates p-value < 0.05]"),
                 tabPanel("Reference",
                  "These data were generated using in vivo BioID in P21 mouse cortex. \n Please see publication at: \n
                   Sakers K, Ramirez JJ, Elazar N, Nagendren L, Soderblom E, Eroglu C. Neuroligin-2 is ubiquitinated by Nedd4l to control developmental astrocyte morphogenesis.
